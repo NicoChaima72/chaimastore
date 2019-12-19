@@ -1,0 +1,193 @@
+:root {
+  --primary: #4e342e;
+  --primary-hover: #5d4037;
+  --secondary: #2e7d32;
+  --secondary-hover: #388e3c;
+}
+*, *::before, *::after {
+  /* margin: 0!important; */
+  /* padding: 0!important; */
+}
+body {
+  font-family: 'Poppins', sans-serif;
+}
+a {
+  text-decoration: none!important;
+}
+
+
+/********* CARD ******************/
+
+.card {
+  zoom: 0.8;
+}
+@media (min-width: 768px){
+  .card {
+    zoom: 1;
+  }
+}
+.card__precio-internet {
+  color: var(--primary);
+  font-size: 20px;
+}
+.card__agregar {
+  position: relative;
+  height: 35px;
+}
+
+.card__agregar button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+.card:hover .card__agregar button {
+  display: block;
+}
+
+
+/********* FOOTER ******************/
+footer {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+/********* PRINCIPAL ******************/
+
+/* carrousel */
+.carousel-item {
+  position: relative;
+}
+ol.carousel-indicators {
+  z-index: 8;
+}
+ol li {
+  width: 20px!important;
+  height: 20px!important;
+  border: 1px solid #000;
+  border-radius: 50%;
+  position: relative;
+}
+.carousel-item .carousel-caption {
+  z-index: 5;
+  display: flex!important;
+  flex-direction: column;
+  align-items: center!important;
+  justify-content: center!important;
+  padding: 20px;
+}
+.carousel-item:nth-child(1) .carousel-caption {
+  top: 50%;
+  left: 50%;
+  width: 70vw;
+  min-width: 700px;
+  transform: translate(-50%, -50%);
+  color: #000;
+  background-color: #fff;
+}
+.carousel-item:nth-child(1) .carousel-caption h3{
+  color: var(--secondary);
+}
+.carousel-item:nth-child(2) .carousel-caption {
+  left: 10px;
+  bottom: 10px;
+  width: 40vw;
+  min-width: 600px;
+  color: #000;
+  background-color: #fff;
+}
+.carousel-item:nth-child(2) .carousel-caption h3{
+  color: var(--secondary);
+}
+
+.carousel-item:nth-child(3) .carousel-caption {
+  right: 10px;
+  bottom: 10px;
+  width: 40vw;
+  min-width: 600px;
+  color: #fff;
+  background-color: #000;
+}
+.carousel-item:nth-child(3) .carousel-caption h3{
+  color: var(--secondary);
+}
+
+.carousel__responsive p {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+.carousel__responsive .carousel-item:nth-child(1) .carousel-caption {
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  min-width: 0;
+  transform: translate(-50%, -50%);
+  color: #000;
+}
+.carousel__responsive .carousel-item:nth-child(2) .carousel-caption {
+  bottom: 10px;
+  left: 10px;
+  right: auto;
+  width: 80vw;
+  min-width: 0;
+  color: #000;
+}
+.carousel__responsive .carousel-item:nth-child(3) .carousel-caption {
+  bottom: 10px;
+  left: 10px;
+  right: auto;
+  width: 80vw;
+  min-width: 0;
+  color: #fff;
+}
+
+
+/*celulares populares*/
+
+.imagenes__extras > div {
+  position: relative;
+} 
+.imagenes__extras h5 {
+  color: var(--secondary);
+  font-size: 15px;
+}
+.imagenes__extras img{
+  height: 150px;
+}
+@media (min-width: 768px){
+  .imagenes__extras img{
+    height: 300px;
+  }
+}
+
+@media (min-width: 768px){
+  .imagen__smartphones h5{
+    font-size: 20px;
+  }
+}
+.imagen__texto__smartphones {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  background-color: #fff;
+  padding: 10px 20px;
+  margin-right: 13px;
+}
+
+.imagen__despacho h5 {
+  font-size: 18px;
+}
+.imagen__texto__despacho {
+  position: absolute;
+  top: 40px;
+  left: 30px;
+  transform: rotate(-15deg);
+}
+@media (min-width: 768px){
+  .imagen__texto__despacho {
+    position: absolute;
+    top: 80px;
+  }
+}

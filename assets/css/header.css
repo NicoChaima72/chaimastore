@@ -1,0 +1,112 @@
+:root {
+  --primary: #4e342e;
+  --primary-hover: #3e2723;
+  --secondary: #28A745;
+  --secondary-hover: #388e3c; 
+}
+
+header {
+  background-color: var(--primary);
+  color: white;
+}
+header i {
+  font-size: 20px;
+}
+header i:hover {
+  cursor: pointer;
+  color: #eceff1;
+  transition: .3s all ease;
+}
+.header__brand h1 {
+  cursor: pointer;
+}
+.header__brand__hamburguesa {
+  cursor: pointer;
+}
+
+.header__buscar {
+  width: 500px;
+  margin: 0 20px;
+}
+.icono__buscar__buscar {
+  display: none;
+  margin: 0 auto;
+  position: absolute;
+  width: 95%;
+  top: 4rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 50;
+}
+
+.header__icono__usuario {
+  cursor: pointer;
+}
+.header__icono__carrito {
+  position: relative;
+}
+.header__icono__carrito span {
+  position: absolute;
+  top: -13px;
+  right: -13px;
+}
+
+
+
+
+
+
+
+.navegacion a {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--primary);
+  transition: .3s all ease;
+}
+.navegacion a:hover:not(.navegacion__responsive__titulo){
+  text-decoration: none;
+  background-color: var(--secondary);
+  color: #fff!important;
+}
+
+.navegacion__principal {
+  box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+}
+
+
+.navegacion__responsive {
+  width: 15rem;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
+  display: none;
+  overflow: auto;
+}
+
+
+div.ocultar-fondo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  display: none;
+}
+.ocultar-fondo__capa {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.ocultar-fondo__header {
+  background-color: var(--primary);
+  padding: 33px 0;
+}
