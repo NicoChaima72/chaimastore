@@ -1,7 +1,7 @@
 <?php 
-require_once './models/vistasModel.php';
+require_once './models/vistaModel.php';
 
-class vistasController extends vistasModel {
+class vistaController extends vistaModel {
 
   public function obtener_plantilla_controller() {
     return require_once "./views/plantilla.php";
@@ -10,10 +10,10 @@ class vistasController extends vistasModel {
   public function obtener_vistas_controller() {
     if (isset($_GET['view'])) {
       $ruta = explode("/", $_GET['view']);
-      $respuesta = vistasModel::obtener_vistas_model($ruta[0]);
+      $respuesta = vistaModel::obtener_vistas_model($ruta[0]);
     } else {
-      header('location:'.SERVER_URL.'inicio');
-      $respuesta = "./views/contents/inicio-view.php";
+      // header('location:'.SERVER_URL.'inicio/');
+      $respuesta = "inicio";
     }
 
     return $respuesta;

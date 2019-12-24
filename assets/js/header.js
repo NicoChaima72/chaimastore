@@ -10,7 +10,7 @@ $(window).resize(function () {
       seMuestra = false;
       seBusca = false;
       $('#ocultarFondo').fadeOut(300);
-      $('#navegacionResponsive').fadeOut(300);
+      $('#navegacionResponsive').removeClass('show');
       $('#txtBuscar').fadeOut(300);
     } else {
       $('body').css('overflow', 'hidden');
@@ -21,19 +21,19 @@ $(window).resize(function () {
 $(document).click(function (e) { 
   if (seMuestra) {
     let navegacion = $('#navegacionResponsive');
-    $('body').css('overflow', 'auto');
     if (!navegacion.is(e.target) && navegacion.has(e.target).length === 0) {
       $('#ocultarFondo').fadeOut(300);
-      $('#navegacionResponsive').fadeOut(300);
+      $('#navegacionResponsive').removeClass('show');
+      $('body').css('overflow', 'auto');
       seMuestra = false;
     }
   }
   if (seBusca) {
     let buscar = $('#txtBuscar');
-    $('body').css('overflow', 'auto');
     if (!buscar.is(e.target) && buscar.has(e.target).length === 0) {
       $('#ocultarFondo').fadeOut(300);
       $('#txtBuscar').fadeOut(300);
+      $('body').css('overflow', 'auto');
       seBusca = false;
     }
   }
@@ -43,7 +43,7 @@ $('#menuHamburguesa').click(function (e) {
   e.preventDefault();
   if (!seMuestra) {
     $('#ocultarFondo').fadeIn(400);
-    $('#navegacionResponsive').fadeIn(400);
+    $('#navegacionResponsive').addClass('show');
     $('body').css('overflow', 'hidden');
     setTimeout(() => {
       seMuestra = true;
@@ -54,6 +54,7 @@ $('#btnBuscar').click(function (e) {
   e.preventDefault();
   $('#ocultarFondo').fadeIn(400);
   $('#txtBuscar').css("display", "flex");
+  $('#txtBuscar input').focus();
   $('body').css('overflow', 'hidden');
   setTimeout(() => {
     seBusca = true;

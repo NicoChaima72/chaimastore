@@ -3,6 +3,7 @@
   --primary-hover: #5d4037;
   --secondary: #2e7d32;
   --secondary-hover: #388e3c;
+  --texto: #343A40;
 }
 *, *::before, *::after {
   /* margin: 0!important; */
@@ -10,11 +11,14 @@
 }
 body {
   font-family: 'Poppins', sans-serif;
+  color: var(--texto);
 }
 a {
   text-decoration: none!important;
 }
-
+.input-error {
+  border: 1px solid red!important;
+}
 
 /********* CARD ******************/
 
@@ -27,7 +31,7 @@ a {
   }
 }
 .card__precio-internet {
-  color: var(--primary);
+  color: var(--secondary);
   font-size: 20px;
 }
 .card__agregar {

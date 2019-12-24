@@ -7,7 +7,7 @@
 
 header {
   background-color: var(--primary);
-  color: white;
+  color: white!important;
 }
 header i {
   font-size: 20px;
@@ -73,16 +73,19 @@ header i:hover {
   box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
 }
 
-
 .navegacion__responsive {
-  width: 15rem;
+  width: 0;
   height: 100vh;
   position: absolute;
   top: 0;
   z-index: 100;
   background-color: #fff;
-  display: none;
+  /* display: none; */
   overflow: auto;
+  -webkit-transition: width 0.2s;
+}
+.navegacion__responsive.show{
+  width: 15rem!important;
 }
 
 
@@ -93,7 +96,6 @@ div.ocultar-fondo {
   z-index: 10;
   top: 0;
   left: 0;
-  background-color: #fff;
   display: none;
 }
 .ocultar-fondo__capa {
@@ -106,7 +108,7 @@ div.ocultar-fondo {
   opacity: 0.8;
   background-color: rgba(0, 0, 0, 0.6);
 }
-.ocultar-fondo__header {
+/* .ocultar-fondo__header {
   background-color: var(--primary);
   padding: 33px 0;
-}
+} */

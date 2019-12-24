@@ -3,8 +3,10 @@
     <div id="menuHamburguesa" class="header__brand__hamburguesa d-block d-md-none mr-3">
       <i class="fas fa-bars"></i>
     </div>
-    <h1 class="d-block d-lg-none h3 m-0">ChaimaStore</h1>
-    <h1 class="d-none d-lg-block h1 m-0">ChaimaStore</h1>
+    <a class="text-white" href="<?php echo SERVER_URL;?>inicio/">
+      <h1 class="d-block d-lg-none h3 m-0">ChaimaStore</h1>
+      <h1 class="d-none d-lg-block h1 m-0">ChaimaStore</h1>
+    </a>
   </div>
   <div class="header__buscar d-none d-md-block bg-primary">
     <div class="input-group">
@@ -18,15 +20,17 @@
     <div class="header__icono__buscar d-flex align-items-center d-block d-md-none">
       <i class="fas fa-search" id="btnBuscar"></i>
       <div id="txtBuscar" class="icono__buscar__buscar input-group">
-        <input type="text" class="form-control" placeholder="¿Qué buscas?">
+        <input type="text" class="form-control" placeholder="¿Qué buscas?" autofocus>
         <div class="input-group-append">
           <button class="btn btn-success" type="button">Buscar</button>
         </div>
       </div>
     </div>
-    <div class="header__icono__usuario d-flex align-items-center mx-2 mx-lg-4" data-toggle="modal" data-target="#modalUsuario">
-      <i class="fas fa-user mx-2"></i>
-      <p class="d-none d-lg-block m-0">Iniciar Sesion</p>
+    <div class="header__icono__usuario d-flex align-items-center mx-2 mx-lg-4">
+      <div class="d-flex align-items-center" data-toggle="modal" data-target="#modalUsuario">
+        <i class="fas fa-user mx-2"></i>
+        <p class="d-none d-lg-block m-0">Iniciar Sesion</p>
+      </div>
 
       <div class="header__usuario__modal modal fade p-0" id="modalUsuario" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -60,9 +64,9 @@
                 </div>
               </div>
               <div class="modal-footer d-flex flex-column">
-                <button type="submit" class="btn btn-success btn-block">Iniciar Sesion</button>
+                <button type="submit" class="btn btn-success btn-block m-0">Iniciar Sesion</button>
                 <div class="modal-footer__extras mt-3">
-                  <p class="text-dark mb-1" style="font-size: 14px">¿No tienes cuenta? <a href="#">Registrate.</a></p>
+                  <p class="text-dark mb-1" style="font-size: 14px">¿No tienes cuenta? <a href="<?php echo SERVER_URL;?>registrar/">Registrate.</a></p>
                 </div>
               </div>
             </form>
@@ -88,7 +92,7 @@
     <a class="w-100 py-3">Motorola</a>
   </nav>
   <nav id="navegacionResponsive" class="navegacion__responsive d-md-none flex-column">
-    <a class="d-block navegacion__responsive__titulo py-4 px-2 font-weight-bold m-0" style="font-size: 25px">ChaimaStore</a>
+    <a href="<?php echo SERVER_URL;?>inicio/" class="d-block navegacion__responsive__titulo py-4 px-2 font-weight-bold m-0" style="font-size: 25px">ChaimaStore</a>
     <a class="w-100 d-block p-3 border">Samsung</a>
     <a class="w-100 d-block p-3 border">Apple</a>
     <a class="w-100 d-block p-3 border">Huawei</a>

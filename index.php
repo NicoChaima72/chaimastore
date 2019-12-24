@@ -1,9 +1,9 @@
 <?php 
-
+require_once './autoload.php';
 require_once './config/configGeneral.php';
-require_once './controllers/vistasController.php';
+// require_once './controllers/vistaController.php';
 
-$plantilla = new vistasController();
+$plantilla = new vistaController();
 $plantilla->obtener_plantilla_controller();
 
 ?>
