@@ -5,13 +5,60 @@ obtenerRegiones();
 
 $('#formRegistrar').submit(function (e) { 
   e.preventDefault();
-  alert("REGISTRADO CON EXITO");
+  let validar = validarFormulario();
+  if (validar) {
+    let email = $('#txtEmail').val();
+    let confirmarEmail = $('#txtConfirmarEmail').val();
+    let password = $('#txtPassword').val();
+    let confirmarPassword = $('#txtConfirmarPassword').val();
+    let nombre = $('#txtNombre').val();
+    let apellidos = $('#txtApellidos').val();
+    let referencial = $('#txtReferencial').val();
+    let rut = $('#txtRut').val();
+    let direccion = {
+      region: $('#cmbRegion').val(),
+      provincia: $('#cmbProvincia').val(),
+      comuna: $('#cmbComuna').val(),
+      calle: $('#txtDireccion').val(),
+      numero: $('#txtNumero').val(),
+      tipo: $('#txtEdificio').val(),
+      depto: $('#txtDepartamento').val(),
+      block: $('#txtBlock').val()
+    };
+    let telefono = $('#txtTelefono').val();
+
+
+    $.ajax({
+      type: "POST",
+      url: `${SERVER_URL}ajax/usuarioAjax.php`,
+      data: {accion: 'registrar_usuario', email, confirmarEmail, password, confirmarPassword, nombre, apellidos, referencial, rut, direccion, telefono},
+      dataType: "json",
+      success: function (res) {
+        console.log(res);
+        if (!res.error) {
+          alert("USUARIO REGISTRADO");
+        } else {
+          mostrarErrorPrincipal(res.error);
+        }
+      },
+      error: function() {
+        mostrarErrorPrincipal("Ha ocurrido un error, intenta más tarde");
+      }
+    });
+  }
 });
 
 $("#btnRegistrar").click(function(e) {
   let validar = validarFormulario();
   if (!validar) {
     e.preventDefault();
+  }
+});
+$('#alertCerrar').click(function (e) { 
+  e.preventDefault();
+  let alert = $('#errorGeneral').parent();
+  if (!alert.hasClass('d-none')) {
+    alert.addClass('d-none');
   }
 });
 

@@ -32,7 +32,7 @@ class mainModel {
     return $output;
   }
 
-  protected function limpiar_cadena($cadena) {
+  protected function limpiar_cadena($cadena, $tipo = 0) {
     $cadena = trim($cadena);
     $cadena = stripslashes($cadena); // Quita las barras invertidas
     $cadena = str_ireplace("<script>", "", $cadena);
@@ -48,7 +48,17 @@ class mainModel {
     $cadena = str_ireplace("]", "", $cadena);
     $cadena = str_ireplace("==", "", $cadena);
     $cadena = str_ireplace(";", "", $cadena);
-
+    if ($tipo == 1) {
+      $cadena = strtolower($cadena);
+    } else if ($tipo == 2) {
+      $cadena = strtoupper($cadena);
+    } else if ($tipo == 3) {
+      $cadena = ucfirst($cadena);
+    } else if ($tipo == 4) {
+      $cadena = ucwords(strtolower($cadena));
+    } else {
+      $cadena = $cadena;
+    }
     return $cadena;
   }
 }

@@ -4,6 +4,7 @@
   --secondary: #2e7d32;
   --secondary-hover: #388e3c;
   --texto: #343A40;
+  --muted: #CCC;
 }
 *, *::before, *::after {
   /* margin: 0!important; */
@@ -40,14 +41,20 @@ a {
 }
 
 .card__agregar button {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: none;
+  display: none; */
+  background-color: var(--muted);
+  border: 1px solid var(--muted);
 }
 .card:hover .card__agregar button {
-  display: block;
+  /* display: block; */
+  background-color: var(--secondary);
+}
+.card__agregar button:hover {
+  background-color: var(--secondary-hover)!important;
 }
 
 
