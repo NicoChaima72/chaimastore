@@ -1,7 +1,5 @@
-var serverUrl = "http://chaimastore.atwebpages.com/inicio/";
+var serverUrl = "http://localhost/php/chaimastore/";
 var url = window.location.href;
-console.log(serverUrl);
-console.log(url);
 if (url.indexOf(serverUrl) < 0) {
   window.location.href = serverUrl;
 }

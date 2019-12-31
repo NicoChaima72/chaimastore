@@ -42,6 +42,7 @@ header i:hover {
 .header__icono__usuario {
   cursor: pointer;
 }
+
 .header__icono__carrito {
   position: relative;
 }

@@ -4,6 +4,4 @@
 <script src='https://kit.fontawesome.com/55d8731b80.js'></script>
 <script src="<?php echo SERVER_URL;?>assets/js/main.js"></script>
 <script src="<?php echo SERVER_URL;?>assets/js/header.js"></script>
-<?php if ($vistaResult == "registrar" || $vistaResult == "inicio") { ?>
-  <script src="<?php echo SERVER_URL;?>assets/js/login.js"></script>
-<?php } ?>
+<script src="<?php echo SERVER_URL;?>assets/js/login.js"></script>

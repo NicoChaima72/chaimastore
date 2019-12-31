@@ -1,6 +1,27 @@
 <?php 
 require_once '../config/mainModel.php';
 class usuarioModel extends mainModel {
+  protected function login_usuario_model($usuario) {
+    $email = utf8_decode($usuario['email']);
+    $query = "SELECT password FROM usuarios WHERE email = :email";
+    $query = parent::conectar()->prepare($query);
+    $query->bindParam(":email", $email);
+    $query->execute();
+    $password = "";
+    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+      $password = $row['password'];
+    }
+    if (!(password_verify($usuario['password'], $password))) {
+      return false;
+    }
+
+    $query = "SELECT * FROM usuarios WHERE email = :email";
+    $query = parent::conectar()->prepare($query);
+    $query->bindParam(":email", $email);
+    $query->execute();
+    return $query;
+  }
+
   protected function registrar_usuario_model($usuario) {
     $nombre = utf8_decode($usuario['nombre']);
     $apellidos = utf8_decode($usuario['apellidos']);
@@ -8,7 +29,7 @@ class usuarioModel extends mainModel {
     $email = utf8_decode($usuario['email']);
     $direccion = utf8_decode($usuario['direccion']);
 
-    $query = "INSERT INTO usuarios (rol_id, region_id, provincia_id, comuna_id, rut, nombre, apellidos, nombre_referencial, email, password, direccion) VALUES (:rol, :region, :provincia, :comuna, :rut, :nombre, :apellidos, :referencial, :email, :password, :direccion)";
+    $query = "INSERT INTO usuarios (rol_id, region_id, provincia_id, comuna_id, rut, nombre, apellidos, nombre_referencial, email, password, direccion, telefono) VALUES (:rol, :region, :provincia, :comuna, :rut, :nombre, :apellidos, :referencial, :email, :password, :direccion, :telefono)";
     $query = parent::conectar()->prepare($query);
 
     $query->bindParam(":rol", $usuario['rol']);
@@ -22,6 +43,7 @@ class usuarioModel extends mainModel {
     $query->bindParam(":email", $email);
     $query->bindParam(":password", $usuario['password']);
     $query->bindParam(":direccion", $direccion);
+    $query->bindParam(":telefono", $usuario['telefono']);
 
     $query->execute();
 

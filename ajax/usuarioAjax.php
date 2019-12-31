@@ -1,8 +1,23 @@
 <?php 
+$peticionAjax = true;
 require_once '../config/configGeneral.php';
 if (isset($_POST['accion'])) {
   require_once '../controllers/usuarioController.php';
   $usuario = new usuarioController();
+  if ($_POST['accion'] == 'logout_usuario') {
+    if (isset($_POST['token'])) {
+      echo json_encode($usuario->logout_usuario_controller());
+    } else {
+      respuesta_error();
+    }
+  }
+  if ($_POST['accion'] == 'login_usuario') {
+    if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['recuerdame'])) {
+      echo json_encode($usuario->login_usuario_controller());
+    } else {
+      respuesta_error();
+    }
+  }
   if ($_POST['accion'] == 'registrar_usuario') {
     if (
       isset($_POST['email']) && isset($_POST['confirmarEmail']) && isset($_POST['password']) && isset($_POST['confirmarPassword']) && isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['referencial']) && isset($_POST['rut']) && isset($_POST['direccion']) && isset($_POST['telefono']) 

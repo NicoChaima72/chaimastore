@@ -1,5 +1,9 @@
 <?php 
-require_once "../config/configAPP.php";
+if ($peticionAjax) {
+  require_once "../config/configAPP.php";
+} else {
+  require_once "./config/configAPP.php";
+}
 
 class mainModel {
   protected function conectar() {
@@ -16,19 +20,18 @@ class mainModel {
   }
 
   public function encryption($string) {
-    $output = false;
-    $key = hash('sha256', SECRET_KEY);
-    $iv = substr(hash('sha256', SECRET_IV), 0, 16);
-    $output = openssl_encrypt($string, METHOD, $key, 0, $iv);
-    $output = base64_encode($output);
+    $output=false;
+    $key=hash('sha256', SECRET_KEY);
+    $iv=substr(hash('sha256', SECRET_IV), 0, 16);
+    $output=openssl_encrypt($string, METHOD, $key, 0, $iv);
+    $output=base64_encode($output);
     return $output;
   }
 
   public function decryption($string) {
-    $key = hash('sha256', SECRET_KEY);
-    $iv = substr(hash('sha256', SECRET_IV), 0, 16);
-    $output = openssl_decrypt($string, METHOD, $key, 0, $iv);
-    $output = base64_encode($output);
+    $key=hash('sha256', SECRET_KEY);
+    $iv=substr(hash('sha256', SECRET_IV), 0, 16);
+    $output=openssl_decrypt(base64_decode($string), METHOD, $key, 0, $iv);
     return $output;
   }
 

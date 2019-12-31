@@ -1,6 +1,74 @@
 <?php 
 require_once '../models/usuarioModel.php';
 class usuarioController extends usuarioModel {
+  public function login_usuario_controller() {
+    $email = mainModel::limpiar_cadena($_POST['email'], 1);
+    $password = mainModel::limpiar_cadena($_POST['password']);
+    $recuerdame = mainModel::limpiar_cadena($_POST['recuerdame']);
+
+    $datosUsuario = [
+      "email" => $email,
+      "password" => $password
+    ];
+
+    $estadoLogin = parent::login_usuario_model($datosUsuario);
+    if (!$estadoLogin) {
+      return enviar_error('Email y/o contraseña incorrectas.');
+    }
+    $datos = $estadoLogin->fetch();
+
+    $rol = mainModel::encryption($datos['rol_id']);
+    $region = mainModel::encryption($datos['region_id']);
+    $provincia = mainModel::encryption($datos['provincia_id']);
+    $comuna = mainModel::encryption($datos['comuna_id']);
+    $rut = mainModel::encryption($datos['rut']);
+    $nombre = mainModel::encryption($datos['nombre']);
+    $apellidos = mainModel::encryption($datos['apellidos']);
+    $referencia = mainModel::encryption($datos['nombre_referencial']);
+    $email = mainModel::encryption($datos['email']);
+    $direccion = mainModel::encryption($datos['direccion']);
+    $telefono = mainModel::encryption($datos['telefono']);
+    $token = md5(uniqid(mt_rand(), true));
+    $token_hash = mainModel::encryption($token);
+
+    session_start();
+    $_SESSION['chaimastore__rol'] = $rol;
+    $_SESSION['chaimastore__region'] = $region;
+    $_SESSION['chaimastore__provincia'] = $provincia;
+    $_SESSION['chaimastore__comuna'] = $comuna;
+    $_SESSION['chaimastore__rut'] = $rut;
+    $_SESSION['chaimastore__nombre'] = $nombre;
+    $_SESSION['chaimastore__apellidos'] = $apellidos;
+    $_SESSION['chaimastore__referencia'] = $referencia;
+    $_SESSION['chaimastore__email'] = $email;
+    $_SESSION['chaimastore__direccion'] = $direccion;
+    $_SESSION['chaimastore__telefono'] = $telefono;
+    $_SESSION['chaimastore__token'] = $token_hash;
+    $_SESSION['chaimastore__id'] = $token;
+
+    if ($recuerdame == "true") {
+      setcookie('_id', $token, strtotime('+20 days'), '/', false, false);
+      setcookie('_user', $email, strtotime('+20 days'), '/', false, false);
+      setcookie('_token', $token_hash, strtotime('+20 days'), '/', false, false);
+    }
+
+    return enviar_success('data', 1);
+  }
+  
+  public function logout_usuario_controller() {
+    session_start();
+    $token = $email = mainModel::limpiar_cadena($_POST['token']);
+    if ($token != $_SESSION['chaimastore__id']) {
+      return enviar_error("El token de registro ha sido modificado");
+    }
+    session_destroy();
+    setcookie("_id", '', 1, "/", false, false);
+    setcookie("_user", '', 1, "/", false, false);
+    setcookie("_token", '', 1, "/", false, false);
+    
+    return enviar_success('data', 1);
+  }
+
   public function registrar_usuario_controller() {
     $email = mainModel::limpiar_cadena($_POST['email'], 1);
     $confirmarEmail = mainModel::limpiar_cadena($_POST['confirmarEmail'], 1);
@@ -57,7 +125,8 @@ class usuarioController extends usuarioModel {
       "referencial" => $referencial,
       "email" => $email,
       "password" => $nuevaPassword,
-      "direccion" => $nuevaDireccion
+      "direccion" => $nuevaDireccion,
+      "telefono" => $telefono
     ];
     
     $guardarUsuario = parent::registrar_usuario_model($datosUsuario);

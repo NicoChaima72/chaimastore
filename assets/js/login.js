@@ -1,5 +1,64 @@
 const SERVER_URL = "http://localhost/php/chaimastore/";
 
+var paginaActual = window.location.href;
+
+$('#btnLogout').click(function (e) { 
+  e.preventDefault();
+  let token = $(this).attr('data');
+  $.ajax({
+    type: "POST",
+    url: `${SERVER_URL}ajax/usuarioAjax.php`,
+    data: {accion: 'logout_usuario', token},
+    dataType: "json",
+    success: function (res) {
+      window.location.href = paginaActual;
+      if (res.error) {
+        alert(`NO SE PUEDE CERRAR SESION\n${res.error}`);
+      }
+    },
+    error: function() {
+      mostrarErrorPrincipal("NO SE HA PODIDO CERRAR SESION, INTENTE MAS TARDE");
+    }
+  });
+});
+
+// LOGIN
+
+$('#formLogin').submit(function (e) { 
+  e.preventDefault();
+  let validar = validarFormulario();
+  if (validar) {
+    let email = $('#txtLoginEmail').val();
+    let password = $('#txtLoginPassword').val();
+    let recuerdame = $('#chbLoginRecuerdame').prop('checked');
+    $.ajax({
+      type: "POST",
+      url: `${SERVER_URL}ajax/usuarioAjax.php`,
+      data: {accion: 'login_usuario', email, password, recuerdame},
+      dataType: "json",
+      success: function (res) {
+        console.log(res);
+        if (!res.error) {
+          window.location.href = paginaActual;
+        } else {
+          mostrarErrorPrincipal(res.error);
+        }
+      },
+      error: function() {
+        mostrarErrorPrincipal("Ha ocurrido un error, intenta más tarde");
+      }
+    });
+  }
+});
+$('#btnLogin').click(function (e) { 
+  let validar = validarFormulario();
+  if (!validar) {
+    e.preventDefault();
+  }
+});
+
+// REGISTRO
+
 obtenerRegiones();
 
 
