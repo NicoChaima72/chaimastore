@@ -52,7 +52,7 @@ class usuarioController extends usuarioModel {
       setcookie('_token', $token_hash, strtotime('+20 days'), '/', false, false);
     }
 
-    return enviar_success('data', 1);
+    return enviar_success('data', $token);
   }
   
   public function logout_usuario_controller() {

@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once './models/vistaModel.php';
 
 class vistaController extends vistaModel {

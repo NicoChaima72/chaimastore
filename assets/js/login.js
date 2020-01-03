@@ -7,10 +7,11 @@ $('#btnLogout').click(function (e) {
   let token = $(this).attr('data');
   $.ajax({
     type: "POST",
-    url: `${SERVER_URL}ajax/usuarioAjax.php`,
+    url: `../ajax/usuarioAjax.php`,
     data: {accion: 'logout_usuario', token},
     dataType: "json",
     success: function (res) {
+      localStorage.removeItem('_id');
       window.location.href = paginaActual;
       if (res.error) {
         alert(`NO SE PUEDE CERRAR SESION\n${res.error}`);
@@ -33,13 +34,13 @@ $('#formLogin').submit(function (e) {
     let recuerdame = $('#chbLoginRecuerdame').prop('checked');
     $.ajax({
       type: "POST",
-      url: `${SERVER_URL}ajax/usuarioAjax.php`,
+      url: `../ajax/usuarioAjax.php`,
       data: {accion: 'login_usuario', email, password, recuerdame},
       dataType: "json",
       success: function (res) {
-        console.log(res);
         if (!res.error) {
           window.location.href = paginaActual;
+          localStorage.setItem('_id', res.data);
         } else {
           mostrarErrorPrincipal(res.error);
         }
@@ -89,7 +90,7 @@ $('#formRegistrar').submit(function (e) {
 
     $.ajax({
       type: "POST",
-      url: `${SERVER_URL}ajax/usuarioAjax.php`,
+      url: `../ajax/usuarioAjax.php`,
       data: {accion: 'registrar_usuario', email, confirmarEmail, password, confirmarPassword, nombre, apellidos, referencial, rut, direccion, telefono},
       dataType: "json",
       success: function (res) {
@@ -144,7 +145,7 @@ function validarFormulario() {
 function obtenerRegiones() {
   $.ajax({
     type: "POST",
-    url: `${SERVER_URL}ajax/usuarioAjax.php`,
+    url: `../ajax/usuarioAjax.php`,
     data: {accion: 'obtener_regiones'},
     dataType: "json",
     success: function (res) {
@@ -163,7 +164,7 @@ function obtenerRegiones() {
 function obtenerProvincias(region) {
   $.ajax({
     type: "POST",
-    url: `${SERVER_URL}ajax/usuarioAjax.php`,
+    url: `../ajax/usuarioAjax.php`,
     data: {accion: 'obtener_provincias', region},
     dataType: "json",
     success: function (res) {
@@ -182,7 +183,7 @@ function obtenerProvincias(region) {
 function obtenerComunas(provincia) {
   $.ajax({
     type: "POST",
-    url: `${SERVER_URL}ajax/usuarioAjax.php`,
+    url: `../ajax/usuarioAjax.php`,
     data: {accion: 'obtener_comunas', provincia},
     dataType: "json",
     success: function (res) {
