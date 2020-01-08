@@ -1,5 +1,5 @@
 :root {
-  --primary: #4e342e;
+  --primary: linear-gradient(to right, #4e342e, #362420);
   --primary-hover: #5d4037;
   --secondary: #2e7d32;
   --secondary-hover: #388e3c;
@@ -58,8 +58,9 @@ img {
 
 /********* FOOTER ******************/
 footer {
-  background-color: var(--primary);
+  background: var(--primary);
   color: #fff;
+  box-shadow: 6px 1px 0 0 rgba(32,33,36,0.28);
 }
 
 /********* PRINCIPAL ******************/
@@ -311,5 +312,19 @@ ol li {
   /* color: var(--primary); */
 }
 .extras .row>div {
-  zoom: .8;
+  zoom: .7;
+}
+
+
+
+
+/************************** SMARTPHONES **********************/
+.smartphones {
+  min-height: 62vh;
+}
+.categoria__nombre {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 400;
+  text-transform: capitalize;
 }

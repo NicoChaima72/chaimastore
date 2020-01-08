@@ -11,37 +11,37 @@ require_once './views/components/carrousel.php';
   </div>
 </section>
 <section class="marcas my-5">
-  <a class="marcas__samsung">
+  <a href="<?php echo SERVER_URL;?>smartphones/samsung/" class="marcas__samsung">
     <h4>Samsung</h4>
     <div class="marcas__fondo"></div>
   </a>
-  <a class="marcas__apple">
+  <a href="<?php echo SERVER_URL;?>smartphones/apple/" class="marcas__apple">
     <h4>Apple</h4>
     <div class="marcas__fondo"></div>
   </a>
-  <a class="marcas__huawei">
+  <a href="<?php echo SERVER_URL;?>smartphones/huawei/" class="marcas__huawei">
     <h4>Huawei</h4>
     <div class="marcas__fondo"></div>
   </a>
-  <a class="marcas__xiaomi">
+  <a href="<?php echo SERVER_URL;?>smartphones/xiaomi/" class="marcas__xiaomi">
     <h4>Xiaomi</h4>
     <div class="marcas__fondo"></div>
   </a>
-  <a class="marcas__lg">
+  <a href="<?php echo SERVER_URL;?>smartphones/lg/" class="marcas__lg">
     <h4>Lg</h4>
     <div class="marcas__fondo"></div>
   </a>
-  <a class="marcas__nokia">
+  <a href="<?php echo SERVER_URL;?>smartphones/nokia/" class="marcas__nokia">
     <h4>Nokia</h4>
     <div class="marcas__fondo"></div>
   </a>
-  <a class="marcas__motorola">
+  <a href="<?php echo SERVER_URL;?>smartphones/motorola/" class="marcas__motorola">
     <h4>Motorola</h4>
     <div class="marcas__fondo"></div>
   </a>
 </section>
 <section class="extras py-4">
-  <div class="row m-0">
+  <div class="row m-0 px-xl-5">
     <div class="my-4 col-6 col-md-3 extras__seguridad text-muted text-center">
       <i class="fas fa-shield-alt fa-3x"></i>
       <h5 class="my-2 font-weight-bold">Seguridad</h5>
@@ -60,7 +60,7 @@ require_once './views/components/carrousel.php';
     <div class="my-4 col-6 col-md-3 extras__seguridad text-muted text-center">
       <i class="fas fa-clock fa-3x"></i>
       <h5 class="my-2 font-weight-bold">Buenos tiempos</h5>
-      <p>Cualquier otra cosa con Chaima'</p>
+      <p>Cualquier otra cosa con Chaima'sAny</p>
     </div>
   </div>
 </section>

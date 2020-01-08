@@ -1,12 +1,13 @@
 :root {
-  --primary: #4e342e;
+  --primary: linear-gradient(to right, #4e342e, #362420);
   --primary-hover: #3e2723;
   --secondary: #28A745;
   --secondary-hover: #388e3c; 
 }
 
 header {
-  background-color: var(--primary);
+background: var(--primary); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   color: white!important;
 }
 header i {
@@ -68,6 +69,9 @@ header i:hover {
   text-decoration: none;
   background-color: var(--secondary);
   color: #fff!important;
+}
+.navegacion__responsive__titulo {
+  font-size: 25px; 
 }
 
 .navegacion__principal {

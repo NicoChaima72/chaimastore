@@ -1,6 +1,6 @@
-<header class="d-flex justify-content-between align-items-center px-4 px-lg-5 py-3 py-lg-4">
-  <div class="header__brand d-flex align-items-center">
-    <div id="menuHamburguesa" class="header__brand__hamburguesa d-block d-md-none mr-3">
+<header class="d-flex justify-content-between align-items-center px-3 px-lg-5 py-3 py-lg-4">
+  <div class="header__brand d-flex align-items-center mr-1">
+    <div id="menuHamburguesa" class="header__brand__hamburguesa d-block d-md-none mr-2">
       <i class="fas fa-bars"></i>
     </div>
     <a class="text-white" href="<?php echo SERVER_URL; ?>inicio/">
@@ -110,23 +110,23 @@
 
 <div class="navegacion">
   <nav class="navegacion__principal d-none d-md-flex justify-content-around px-4 px-lg-5 text-center">
-    <a class="w-100 py-3">Samsung</a>
-    <a class="w-100 py-3">Apple</a>
-    <a class="w-100 py-3">Huawei</a>
-    <a class="w-100 py-3">Xiaomi</a>
-    <a class="w-100 py-3">Lg</a>
-    <a class="w-100 py-3">Nokia</a>
-    <a class="w-100 py-3">Motorola</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/samsung/" class="w-100 py-3">Samsung</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/apple/" class="w-100 py-3">Apple</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/huawei/" class="w-100 py-3">Huawei</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/xiaomi/" class="w-100 py-3">Xiaomi</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/lg/" class="w-100 py-3">Lg</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/nokia/" class="w-100 py-3">Nokia</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/motorola/" class="w-100 py-3">Motorola</a>
   </nav>
   <nav id="navegacionResponsive" class="navegacion__responsive d-md-none flex-column">
-    <a href="<?php echo SERVER_URL; ?>inicio/" class="d-block navegacion__responsive__titulo py-4 px-2 font-weight-bold m-0" style="font-size: 25px">ChaimaStore</a>
-    <a class="w-100 d-block p-3 border">Samsung</a>
-    <a class="w-100 d-block p-3 border">Apple</a>
-    <a class="w-100 d-block p-3 border">Huawei</a>
-    <a class="w-100 d-block p-3 border">Xiaomi</a>
-    <a class="w-100 d-block p-3 border">Lg</a>
-    <a class="w-100 d-block p-3 border">Nokia</a>
-    <a class="w-100 d-block p-3 border">Motorola</a>
+    <a href="<?php echo SERVER_URL;?>inicio/" class="d-block navegacion__responsive__titulo py-4 px-2 font-weight-bold m-0">ChaimaStore</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/samsung/" class="w-100 d-block p-3 border">Samsung</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/apple/" class="w-100 d-block p-3 border">Apple</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/huawei/" class="w-100 d-block p-3 border">Huawei</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/xiaomi/" class="w-100 d-block p-3 border">Xiaomi</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/lg/" class="w-100 d-block p-3 border">Lg</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/nokia/" class="w-100 d-block p-3 border">Nokia</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/motorola/" class="w-100 d-block p-3 border">Motorola</a>
   </nav>
 </div>
 

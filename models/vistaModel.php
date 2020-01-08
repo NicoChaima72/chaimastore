@@ -3,7 +3,7 @@
 class vistaModel {
   protected function obtener_vistas_model($vista) {
     $listaBlanca = [
-      'inicio', 'registrar', 'samsung', 'apple', 'huawei', 'xiaomi', 'lg', 'nokia', 'motorola'
+      'inicio', 'registrar', 'smartphones'
     ];
 
     if (in_array($vista, $listaBlanca)) {

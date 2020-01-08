@@ -15,6 +15,7 @@ class tarjetasController extends tarjetasModel {
         'oferta' => $row['oferta'],
         'popularidad' => $row['popularidad'],
         'imagen' => $row['imagen'],
+        'fecha' => $row['fecha']
       ];
     }
     return $tarjetas;
