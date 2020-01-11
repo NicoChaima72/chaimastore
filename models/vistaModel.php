@@ -3,7 +3,7 @@
 class vistaModel {
   protected function obtener_vistas_model($vista) {
     $listaBlanca = [
-      'inicio', 'registrar', 'smartphones'
+      'inicio', 'registrar', 'smartphones', 'smartphone'
     ];
 
     if (in_array($vista, $listaBlanca)) {

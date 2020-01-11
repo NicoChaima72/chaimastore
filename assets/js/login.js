@@ -44,7 +44,7 @@ $('#formLogin').submit(function (e) {
       dataType: "json",
       success: function (res) {
         if (!res.error) {
-          window.location.href = paginaActual;
+          window.location.href = url;
           localStorage.setItem('_id', res.data);
         } else {
           mostrarErrorPrincipal(res.error);

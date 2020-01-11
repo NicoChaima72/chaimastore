@@ -126,7 +126,7 @@
     <a href="<?php echo SERVER_URL;?>smartphones/xiaomi/" class="w-100 d-block p-3 border">Xiaomi</a>
     <a href="<?php echo SERVER_URL;?>smartphones/lg/" class="w-100 d-block p-3 border">Lg</a>
     <a href="<?php echo SERVER_URL;?>smartphones/nokia/" class="w-100 d-block p-3 border">Nokia</a>
-    <a href="<?php echo SERVER_URL;?>smartphones/motorola/" class="w-100 d-block p-3 border">Motorola</a>
+    <a href="<?php echo SERVER_URL;?>smartphones/motorola/" class="w-100 d-block p-3 border mb-3">Motorola</a>
   </nav>
 </div>
 

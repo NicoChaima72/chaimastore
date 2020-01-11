@@ -6,9 +6,10 @@
 }
 
 header {
-background: var(--primary); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: var(--primary); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white!important;
+  zoom: .9;
+  box-shadow: 0 2px 6px 0 rgba(32,33,36,0.28);
 }
 header i {
   font-size: 20px;
@@ -88,6 +89,8 @@ header i:hover {
   /* display: none; */
   overflow: auto;
   -webkit-transition: width 0.2s;
+  /* box-shadow: 0 2px 6px 0  */
+  box-shadow: 0 2px 6px 0 rgba(32,33,36,0.28);
 }
 .navegacion__responsive.show{
   width: 15rem!important;
