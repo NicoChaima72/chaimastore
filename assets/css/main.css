@@ -25,6 +25,13 @@ a {
 img {
   width: 100%;
 }
+select {
+  border: 1px solid #aaa;
+  background-color: transparent;
+  padding: 3px 7px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 .input-error {
   border: 1px solid red!important;
 }

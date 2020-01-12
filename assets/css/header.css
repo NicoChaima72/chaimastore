@@ -63,7 +63,7 @@ header i:hover {
 .navegacion a {
   cursor: pointer;
   text-decoration: none;
-  color: var(--primary);
+  color: var(--primary-hover);
   transition: .3s all ease;
 }
 .navegacion a:hover:not(.navegacion__responsive__titulo){
@@ -72,7 +72,8 @@ header i:hover {
   color: #fff!important;
 }
 .navegacion__responsive__titulo {
-  font-size: 25px; 
+  font-size: 25px;
+  color: var(--primary-hover);
 }
 
 .navegacion__principal {

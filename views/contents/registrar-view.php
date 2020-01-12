@@ -6,8 +6,8 @@
   <hr>
   <form id="formRegistrar">
     <div class="alert alert-danger alert-dismissible fade show d-none" role="alert">
-      <p id="errorGeneral" class="m-0">Las contraseñas no coinciden.</p>
-      <button id="alertCerrar" type="button" class="close">
+      <p id="errorGeneral1" class="m-0">Las contraseñas no coinciden.</p>
+      <button id="alertCerrar1" type="button" class="close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>

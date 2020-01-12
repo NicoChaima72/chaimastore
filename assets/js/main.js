@@ -1,4 +1,4 @@
-var serverUrl = "http://localhost/php/chaimastore/";
+var serverUrl = "http://localhost/chaimastore/";
 var url = window.location.href;
 if (url.indexOf(serverUrl) === -1) {
   window.location.href = serverUrl;
@@ -71,7 +71,7 @@ if (directorioPadre == "smartphone") {
 function obtenerSmartphone(codigo, padre) {
   $.ajax({
     type: "POST",
-    url: `../../ajax/smartphoneAjax.php`,
+    url: `${serverUrl}ajax/smartphoneAjax.php`,
     data: {codigo},
     dataType: "json",
     success: function (res) {
@@ -267,7 +267,7 @@ function llenarSmartphone(smartphone) {
 function obtenerSmartphones(tipo, padre, orden = 0) {
   $.ajax({
     type: "POST",
-    url: `${raiz}ajax/smartphoneAjax.php`,
+    url: `${serverUrl}ajax/smartphoneAjax.php`,
     data: {tipo},
     dataType: "json",
     success: function (res) {

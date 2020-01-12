@@ -1,4 +1,4 @@
-var serverUrl = "http://localhost/php/chaimastore/";
+var serverUrl = "http://localhost/chaimastore/";
 var url = window.location.href;
 var extra = url.substring(serverUrl.length, url.length -1);
 var raiz = "";
@@ -12,18 +12,18 @@ $('#btnLogout').click(function (e) {
   let token = $(this).attr('data');
   $.ajax({
     type: "POST",
-    url: `${raiz}ajax/usuarioAjax.php`,
+    url: `${serverUrl}ajax/usuarioAjax.php`,
     data: {accion: 'logout_usuario', token},
     dataType: "json",
     success: function (res) {
       localStorage.removeItem('_id');
-      window.location.href = paginaActual;
+      window.location.href = url;
       if (res.error) {
         alert(`NO SE PUEDE CERRAR SESION\n${res.error}`);
       }
     },
     error: function() {
-      mostrarErrorPrincipal("NO SE HA PODIDO CERRAR SESION, INTENTE MAS TARDE");
+      alert("NO SE HA PODIDO CERRAR SESION, INTENTE MAS TARDE");
     }
   });
 });
@@ -32,14 +32,14 @@ $('#btnLogout').click(function (e) {
 
 $('#formLogin').submit(function (e) { 
   e.preventDefault();
-  let validar = validarFormulario();
+  let validar = validarFormulario("#formLogin ");
   if (validar) {
     let email = $('#txtLoginEmail').val();
     let password = $('#txtLoginPassword').val();
     let recuerdame = $('#chbLoginRecuerdame').prop('checked');
     $.ajax({
       type: "POST",
-      url: `${raiz}ajax/usuarioAjax.php`,
+      url: `${serverUrl}ajax/usuarioAjax.php`,
       data: {accion: 'login_usuario', email, password, recuerdame},
       dataType: "json",
       success: function (res) {
@@ -57,7 +57,7 @@ $('#formLogin').submit(function (e) {
   }
 });
 $('#btnLogin').click(function (e) { 
-  let validar = validarFormulario();
+  let validar = validarFormulario("#formLogin ");
   if (!validar) {
     e.preventDefault();
   }
@@ -70,7 +70,7 @@ obtenerRegiones();
 
 $('#formRegistrar').submit(function (e) { 
   e.preventDefault();
-  let validar = validarFormulario();
+  let validar = validarFormulario("formRegistrar ");
   if (validar) {
     let email = $('#txtEmail').val();
     let confirmarEmail = $('#txtConfirmarEmail').val();
@@ -95,7 +95,7 @@ $('#formRegistrar').submit(function (e) {
 
     $.ajax({
       type: "POST",
-      url: `${raiz}ajax/usuarioAjax.php`,
+      url: `${serverUrl}ajax/usuarioAjax.php`,
       data: {accion: 'registrar_usuario', email, confirmarEmail, password, confirmarPassword, nombre, apellidos, referencial, rut, direccion, telefono},
       dataType: "json",
       success: function (res) {
@@ -114,7 +114,7 @@ $('#formRegistrar').submit(function (e) {
 });
 
 $("#btnRegistrar").click(function(e) {
-  let validar = validarFormulario();
+  let validar = validarFormulario("#formRegistrar ");
   if (!validar) {
     e.preventDefault();
   }
@@ -122,6 +122,13 @@ $("#btnRegistrar").click(function(e) {
 $('#alertCerrar').click(function (e) { 
   e.preventDefault();
   let alert = $('#errorGeneral').parent();
+  if (!alert.hasClass('d-none')) {
+    alert.addClass('d-none');
+  }
+});
+$('#alertCerrar1').click(function (e) { 
+  e.preventDefault();
+  let alert = $('#errorGeneral1').parent();
   if (!alert.hasClass('d-none')) {
     alert.addClass('d-none');
   }
@@ -138,11 +145,11 @@ $('#cmbProvincia').change(function (e) {
 });
 
 
-function validarFormulario() {
-  if (validarRequerido() && validarEmail() && validarRut() && validarSelects() && confirmarEmail() && confirmarPassword()) {
+function validarFormulario(formulario) {
+  if (validarRequerido(formulario) && validarEmail(formulario) && validarRut(formulario) && validarSelects(formulario) && confirmarEmail(formulario) && confirmarPassword(formulario)) {
     return true;
   } else{
-    mostrarErrorPrincipal("Verifique los campos", 1);
+    mostrarErrorPrincipal1("Verifique los campos", 1);
   }
   return false;
 }
@@ -150,18 +157,18 @@ function validarFormulario() {
 function obtenerRegiones() {
   $.ajax({
     type: "POST",
-    url: `${raiz}ajax/usuarioAjax.php`,
+    url: `${serverUrl}ajax/usuarioAjax.php`,
     data: {accion: 'obtener_regiones'},
     dataType: "json",
     success: function (res) {
       if (!res.error) {
         rellenarSelect('#cmbRegion', res.data);
       } else {
-        mostrarErrorPrincipal(res.error);
+        mostrarErrorPrincipal1(res.error);
       }
     },
     error: function() {
-      mostrarErrorPrincipal("Ha ocurrido un error, intenta más tarde");
+      mostrarErrorPrincipal1("Ha ocurrido un error, intenta más tarde");
     }
   });
 }
@@ -169,18 +176,18 @@ function obtenerRegiones() {
 function obtenerProvincias(region) {
   $.ajax({
     type: "POST",
-    url: `${raiz}ajax/usuarioAjax.php`,
+    url: `${serverUrl}ajax/usuarioAjax.php`,
     data: {accion: 'obtener_provincias', region},
     dataType: "json",
     success: function (res) {
       if (!res.error) {
         rellenarSelect('#cmbProvincia', res.data);
       } else {
-        mostrarErrorPrincipal(res.error);
+        mostrarErrorPrincipal1(res.error);
       }
     },
     error: function() {
-      mostrarErrorPrincipal("Ha ocurrido un error, intenta más tarde");
+      mostrarErrorPrincipal1("Ha ocurrido un error, intenta más tarde");
     }
   });
 }
@@ -188,18 +195,18 @@ function obtenerProvincias(region) {
 function obtenerComunas(provincia) {
   $.ajax({
     type: "POST",
-    url: `${raiz}ajax/usuarioAjax.php`,
+    url: `${serverUrl}ajax/usuarioAjax.php`,
     data: {accion: 'obtener_comunas', provincia},
     dataType: "json",
     success: function (res) {
       if (!res.error) {
         rellenarSelect('#cmbComuna', res.data);
       } else {
-        mostrarErrorPrincipal(res.error);
+        mostrarErrorPrincipal1(res.error);
       }
     },
     error: function() {
-      mostrarErrorPrincipal("Ha ocurrido un error, intenta más tarde");
+      mostrarErrorPrincipal1("Ha ocurrido un error, intenta más tarde");
     }
   });
 }
@@ -258,9 +265,9 @@ function confirmarPassword() {
   return estado;
 }
 
-function validarRut() {
+function validarRut(formulario = "") {
   let sinErrores = true;
-  $(".solo-rut").each(function(e) {
+  $(`${formulario}.solo-rut`).each(function(e) {
     let valor = $(this)
       .val()
       .replace(".", "");
@@ -302,9 +309,9 @@ function validarRut() {
   return sinErrores;
 }
 
-function validarSelects() {
+function validarSelects(formulario = "") {
   let sinErrores = true;
-  $('select').each(function(e) {
+  $(`${formulario}select`).each(function(e) {
     if (!$(this).val()) {
       sinErrores = false;
       setTimeout(() => {
@@ -318,9 +325,9 @@ function validarSelects() {
   return sinErrores;
 }
 
-function validarRequerido() {
+function validarRequerido(formulario = "") {
   let sinErrores = true;
-  $(".campo-requerido").each(function(e) {
+  $(`${formulario}.campo-requerido`).each(function(e) {
     if ($(this).val().length == 0) {
       sinErrores = false;
       let id = $(this).attr('id');
@@ -342,10 +349,10 @@ function validarRequerido() {
   return sinErrores;
 }
 
-function validarEmail(email) {
+function validarEmail(email, formulario = "") {
   let regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
   let sinErrores = true;
-  $('.campo-email').each(function(e) {
+  $(`${formulario}.campo-email`).each(function(e) {
     if (!regex.test($(this).val().trim())) {
       sinErrores = false;
       let id = $(this).attr('id');
@@ -384,6 +391,16 @@ function mostrarErrorPrincipal(texto, tipo = 0) {
   $('#errorGeneral').parent().removeClass('d-none');
   $('#errorGeneral').text(texto);
   $(document).scrollTop($('#errorGeneral').scrollTop());
+}
+function mostrarErrorPrincipal1(texto, tipo = 0) {
+  let tipos = ['danger', 'warning'];
+  if (!$('#errorGeneral1').parent().hasClass(`alert-${tipos[tipo]}`)) {
+    $('#errorGeneral1').parent().removeClass(`alert-${tipos[(tipo - 1) * -1]}`);
+    $('#errorGeneral1').parent().addClass(`alert-${tipos[tipo]}`);
+  }
+  $('#errorGeneral1').parent().removeClass('d-none');
+  $('#errorGeneral1').text(texto);
+  $(document).scrollTop($('#errorGeneral1').scrollTop());
 }
 
 $(".solo-numeros").on("input", function() {
