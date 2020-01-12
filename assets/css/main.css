@@ -360,14 +360,30 @@ ol li {
 
 
 /************************** SMARTPHONE **********************/
-
+.smartphone {
+  min-height: 62vh;
+}
 .smartphone__informacion{
   box-shadow: 0 0 8px -3px rgba(32,33,36,0.28);
 }
-.smartphone__informacion > div:first-of-type > div:first-child {
-  border-right: 1px solid #ddd;
+@media (min-width: 768px){
+  .smartphone__informacion > div:first-of-type > div:first-child {
+    border-right: 1px solid #ddd;
+  }
 }
-
+.smartphone__imagen {
+  position: relative;
+}
+.smartphone__oferta {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  zoom: 1.7;
+  border-radius: 0;
+}
+.smartphone__agotado {
+  background-color: #aaa;
+}
 .smartphone__precios .precio:first-of-type {
   font-size: 24px;
 }
@@ -398,5 +414,5 @@ ol li {
   bottom: 0;
   left: 0;
   z-index: 5;
-  box-shadow: 6px 1px 7px 1px rgba(32,33,36,0.28);
+  box-shadow: 0 0 7px 2px rgba(32,33,36,0.28);
 }

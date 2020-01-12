@@ -6,7 +6,7 @@ require_once './views/components/carrousel.php';
   <h2 class="h3 d-block d-md-none">Celulares más populares</h2>
   <h2 class="h1 d-none d-md-block">Celulares más populares</h2>
   <hr>
-  <div id="tarjetasPopulares">
+  <div id="smartphonesPopulares">
     <i class="fas fa-spinner fa-2x fa-spin text-center d-block w-100 mt-4"></i>
   </div>
 </section>
