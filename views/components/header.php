@@ -15,7 +15,7 @@
       <div class="input-group-append">
         <button class="btn btn-success" id="btnBuscar" type="button">Buscar</button>
       </div>
-      <small id="txtErrorBuscar" class="text-danger error__buscar">Contiene caracteres invalidos</small>
+      <small id="txtErrorBuscar" class="text-danger error__buscar"></small>
     </div>
   </div>
   <div class="header__iconos d-flex align-items-center">
@@ -27,7 +27,7 @@
         <div class="input-group-append">
           <button id="btnBuscar1" class="btn btn-success" type="button">Buscar</button>
         </div>
-        <small id="txtErrorBuscar1" class="text-danger error__buscar">Contiene caracteres invalidos</small>
+        <small id="txtErrorBuscar1" class="text-danger error__buscar"></small>
       </div>
     </div>
     <?php

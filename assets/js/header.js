@@ -64,10 +64,15 @@ $('#iconoBuscar').click(function (e) {
 
 $('#txtBuscar, #txtBuscar1').keyup(function (e) { 
   input = $(this);
+  let padre = $(this).parent();
+  let mensajeError = padre.children('small.error__buscar');
   if (input.val().length != 0) {
     input.parent().children('span').show();
   } else {
     input.parent().children('span').hide();
+  }
+  if (e.which == 13) {
+    validarBuscar(padre, input, mensajeError);
   }
 });
 $('.header__buscar span, .header__icono__buscar span').click(function (e) { 
@@ -80,23 +85,34 @@ $('#btnBuscar, #btnBuscar1').click(function (e) {
   let padre = $(this).parent().parent();
   let input = padre.children('input');
   let mensajeError = padre.children('small.error__buscar');
+  validarBuscar(padre, input, mensajeError);
+});
+
+function validarBuscar(padre, input, mensajeError) {
+  let mensaje = "";
   let texto = input.val();
   let caracteresProhibidos = '<>-_./,!"#$%&/()=?¿¡';
   let esValido = true;
+  if (texto.length == 0) {
+    esValido = false;
+    mensaje = "Campo requerido";
+  }
   for (i = 0; i < texto.length; i++) {
     for (j = 0; j < caracteresProhibidos.length; j++) {
       if (texto.charAt(i) == caracteresProhibidos.charAt(j)) {
         esValido = false;
+        mensaje = "Contiene caracteres invalidos";
       }
     }
   }
   if (!esValido) {
-    e.preventDefault();
     setTimeout(() => {
       input.addClass('input-error');
+      mensajeError.html(mensaje);
       mensajeError.fadeIn(200);
       setTimeout(() => {
         input.removeClass('input-error');
+        mensajeError.html("");
         mensajeError.fadeOut(150);
       }, 7000);
     }, 200);
@@ -105,5 +121,4 @@ $('#btnBuscar, #btnBuscar1').click(function (e) {
     texto = texto.replace(/ /gi, '-');
     window.location.href = `${serverUrl}buscar/${texto}/`;
   }
-});
-
+}
