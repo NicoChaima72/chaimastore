@@ -38,6 +38,9 @@ select {
 .hidden {
   overflow: hidden!important;
 }
+.container-principal {
+  min-height: 90vh;
+}
 
 /********* CARD ******************/
 
@@ -354,9 +357,6 @@ ol li {
 
 
 /************************** SMARTPHONES **********************/
-.smartphones {
-  min-height: 62vh;
-}
 .categoria__nombre {
   background: var(--primary);
   color: #fff;
@@ -367,9 +367,6 @@ ol li {
 
 
 /************************** SMARTPHONE **********************/
-.smartphone {
-  min-height: 62vh;
-}
 .smartphone__informacion{
   box-shadow: 0 0 8px -3px rgba(32,33,36,0.28);
 }

@@ -10,20 +10,24 @@
   </div>
   <div class="header__buscar d-none d-md-block bg-primary">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="¿Qué buscas?">
+      <input type="text" id="txtBuscar" class="form-control" placeholder="¿Qué buscas?">
+      <span class="text-muted"><i class="fas fa-times"></i></span>
       <div class="input-group-append">
-        <button class="btn btn-success" type="button">Buscar</button>
+        <button class="btn btn-success" id="btnBuscar" type="button">Buscar</button>
       </div>
+      <small id="txtErrorBuscar" class="text-danger error__buscar">Contiene caracteres invalidos</small>
     </div>
   </div>
   <div class="header__iconos d-flex align-items-center">
     <div class="header__icono__buscar d-flex align-items-center d-block d-md-none">
-      <i class="fas fa-search" id="btnBuscar"></i>
-      <div id="txtBuscar" class="icono__buscar__buscar input-group">
-        <input type="text" class="form-control" placeholder="¿Qué buscas?" autofocus>
+      <i class="fas fa-search" id="iconoBuscar"></i>
+      <div id="containerBuscar" class="icono__buscar__buscar input-group">
+        <input type="text" id="txtBuscar1" class="form-control" placeholder="¿Qué buscas?" autofocus>
+        <span class="text-muted"><i class="fas fa-times"></i></span>
         <div class="input-group-append">
-          <button class="btn btn-success" type="button">Buscar</button>
+          <button id="btnBuscar1" class="btn btn-success" type="button">Buscar</button>
         </div>
+        <small id="txtErrorBuscar1" class="text-danger error__buscar">Contiene caracteres invalidos</small>
       </div>
     </div>
     <?php

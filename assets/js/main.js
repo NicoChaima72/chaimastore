@@ -65,6 +65,21 @@ if (directorioPadre == "smartphone") {
   obtenerSmartphone(parametro, 'smartphone');
 }
 
+if (directorioPadre == "buscar") {
+  let urlBase = `${serverUrl + directorioPadre}/`;
+  let parametro = "todos";
+  if (urlBase.length !== url.length) {
+    parametro = url.substring(urlBase.length, url.length -1);
+  }
+  parametro = parametro.split('-');
+  parametro = parametro.join(' ');
+  $('#buscarTitulo').text(parametro);
+  parametro = parametro = parametro.split(' ');
+  parametro = parametro.join('-');
+  parametro = parametro.toLowerCase();
+  console.log(parametro);
+  obtenerSmartphones('buscar', 'listaSmartphones', 0, parametro);
+}
 
 
 
@@ -264,21 +279,36 @@ function llenarSmartphone(smartphone) {
 
 
 
-function obtenerSmartphones(tipo, padre, orden = 0) {
+function obtenerSmartphones(tipo, padre, orden = 0, buscar = "") {
+  if (tipo == "buscar") {
+    text = "No se han encontrado resultados";
+  } else {
+    text = "Categoria no encontrada";
+  }
   $.ajax({
     type: "POST",
     url: `${serverUrl}ajax/smartphoneAjax.php`,
-    data: {tipo},
+    data: {tipo, buscar},
     dataType: "json",
     success: function (res) {
-      let mensaje = llenarSmartphones(res, tipo, orden);
-      $(`#${padre}`).html(mensaje);
-      $(`#cmbOrden option[value="${orden}"]`).attr("selected",true);
+      if (res.data) {
+        let mensaje = llenarSmartphones(res, tipo, orden);
+        $(`#${padre}`).html(mensaje);
+        $(`#cmbOrden option[value="${orden}"]`).attr("selected",true);
+      } else {
+        $(`#${padre}`).html(`
+        <div class="text-center mt-5">
+          <p class="lead text-uppercase">${text}</p>
+          <a href="${serverUrl}inicio/" class="btn btn-danger">VOLVER A INICIO</a>
+        </div>
+      `);
+      }
     },
-    error: function () {
+    error: function (e) {
+      console.log(e);
       $(`#${padre}`).html(`
         <div class="text-center mt-5">
-          <p class="lead text-uppercase">Categoria no encontrada</p>
+          <p class="lead text-uppercase">${text}</p>
           <a href="${serverUrl}inicio/" class="btn btn-danger">VOLVER A INICIO</a>
         </div>
       `);
@@ -348,7 +378,7 @@ function llenarSmartphones(smartphones, tipo, orden) {
     }
     mensaje += `
       <div class="col mb-3 px-1 px-xl-2">
-        <a href="${serverUrl}smartphone/${tarjeta.codigo}" class="card text-dark h-100 hidden">
+        <a href="${serverUrl}smartphone/${tarjeta.codigo}/" class="card text-dark h-100 hidden">
           <img src="${imagen}" class="card-img-top border" height="250" alt="...">
           <div class="card-body">
             <div class="card__marca d-flex align-items-center">

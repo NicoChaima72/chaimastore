@@ -3,7 +3,8 @@ require_once '../models/smartphoneModel.php';
 class smartphoneController extends smartphoneModel {
   public function obtener_smartphones_controller() {
     $tipo = mainModel::limpiar_cadena($_POST['tipo'], 1);
-    $resultado = smartphoneModel::obtener_smartphones_model($tipo);
+    $buscar = mainModel::limpiar_cadena($_POST['buscar'], 1);
+    $resultado = smartphoneModel::obtener_smartphones_model($tipo, $buscar);
     $smartphones = [];
     while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
       $smartphones['data'][] = [

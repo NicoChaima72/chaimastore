@@ -1,3 +1,4 @@
+var serverUrl = "http://localhost/chaimastore/";
 var seMuestra = false;
 var seBusca = false;
 
@@ -11,7 +12,7 @@ $(window).resize(function () {
       seBusca = false;
       $('#ocultarFondo').fadeOut(300);
       $('#navegacionResponsive').removeClass('show');
-      $('#txtBuscar').fadeOut(300);
+      $('#containerBuscar').fadeOut(300);
     } else {
       $('body').css('overflow', 'hidden');
     }
@@ -29,10 +30,10 @@ $(document).click(function (e) {
     }
   }
   if (seBusca) {
-    let buscar = $('#txtBuscar');
+    let buscar = $('#containerBuscar');
     if (!buscar.is(e.target) && buscar.has(e.target).length === 0) {
       $('#ocultarFondo').fadeOut(300);
-      $('#txtBuscar').fadeOut(300);
+      $('#containerBuscar').fadeOut(300);
       $('body').css('overflow', 'auto');
       seBusca = false;
     }
@@ -50,16 +51,59 @@ $('#menuHamburguesa').click(function (e) {
     }, 200);
   }
 });
-$('#btnBuscar').click(function (e) { 
+$('#iconoBuscar').click(function (e) { 
   e.preventDefault();
   $('#ocultarFondo').fadeIn(400);
-  $('#txtBuscar').css("display", "flex");
-  $('#txtBuscar input').focus();
+  $('#containerBuscar').css("display", "flex");
+  $('#containerBuscar input').focus();
   $('body').css('overflow', 'hidden');
   setTimeout(() => {
     seBusca = true;
   }, 200);
 });
 
+$('#txtBuscar, #txtBuscar1').keyup(function (e) { 
+  input = $(this);
+  if (input.val().length != 0) {
+    input.parent().children('span').show();
+  } else {
+    input.parent().children('span').hide();
+  }
+});
+$('.header__buscar span, .header__icono__buscar span').click(function (e) { 
+  e.preventDefault();
+  $(this).parent().children('input').val("");
+  $(this).hide();
+});
 
+$('#btnBuscar, #btnBuscar1').click(function (e) { 
+  let padre = $(this).parent().parent();
+  let input = padre.children('input');
+  let mensajeError = padre.children('small.error__buscar');
+  let texto = input.val();
+  let caracteresProhibidos = '<>-_./,!"#$%&/()=?¿¡';
+  let esValido = true;
+  for (i = 0; i < texto.length; i++) {
+    for (j = 0; j < caracteresProhibidos.length; j++) {
+      if (texto.charAt(i) == caracteresProhibidos.charAt(j)) {
+        esValido = false;
+      }
+    }
+  }
+  if (!esValido) {
+    e.preventDefault();
+    setTimeout(() => {
+      input.addClass('input-error');
+      mensajeError.fadeIn(200);
+      setTimeout(() => {
+        input.removeClass('input-error');
+        mensajeError.fadeOut(150);
+      }, 7000);
+    }, 200);
+  } else {
+    texto = texto.trim();
+    texto = texto.replace(/ /gi, '-');
+    window.location.href = `${serverUrl}buscar/${texto}/`;
+  }
+});
 

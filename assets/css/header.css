@@ -121,3 +121,39 @@ div.ocultar-fondo {
   background-color: var(--primary);
   padding: 33px 0;
 } */
+
+.header__buscar {
+  position: relative;
+}
+.error__buscar {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  background-color: #fff;
+  padding: 7px 15px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 1px 0 0 rgba(32,33,36,0.28);
+  border-radius: 7px;
+  display: none;
+}
+
+.header__buscar span,
+.header__icono__buscar span {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: 12px;
+  z-index: 1000;
+  display: none;
+}
+.header__buscar input,
+.header__icono__buscar input {
+  padding-right: 30px;
+}
+
+.header__buscar span {
+  right: 90px;
+}
+.header__icono__buscar span {
+  right: 90px;
+}
