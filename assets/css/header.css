@@ -157,3 +157,76 @@ div.ocultar-fondo {
 .header__icono__buscar span {
   right: 90px;
 }
+
+.header__carrito {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 93%;
+  height: 93%;
+  background-color: #fff;
+  z-index: 500;
+  box-shadow: 0 0 8px -3px rgba(32,33,36,0.28);
+  padding: 20px;
+  display: none;
+}
+@media (min-width: 768px){
+  .header__carrito {
+    width: 400px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    transform: none;
+    padding: 25px;
+  }
+}
+.carrito__lista {
+  overflow: auto;
+  height: calc(100% - 4rem);
+}
+.carrito__cerrar {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+}
+.carrito__articulo {
+  position: relative;
+  padding: 8px 10px 8px 3px;
+  box-shadow: 3px 0 2px 0px rgba(32,33,36,0.28);
+}
+.carrito__informacion {
+  /* position: relative; */
+  height: 100%;
+}
+.carrito__footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: red;
+}
+.informacion__imagen {
+  width: 90px!important;
+}
+.informacion__cantidad {
+  border: 1px solid #aaa;
+  background-color: transparent;
+  padding: 1px 7px;
+  border-radius: 4px;
+  width: 80px;
+  margin-left: 10px;
+}
+.informacion__eliminar {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+.carrito__resumen {
+  margin: 10px;
+  background-color: #eee;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1px solid #ddd;
+}

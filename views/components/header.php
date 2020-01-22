@@ -94,7 +94,7 @@
           <p class="d-none d-lg-block m-0"><?php echo $nombre; ?></p>
         </span>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <p class="p-2 pb-1 m-0 ml-1 mr-5">Nicolas Chaima</p>
+          <p class="p-2 pb-1 m-0 ml-1 mr-5"><?php echo $nombre; ?></p>
           <div class="dropdown-divider m-0 mb-2"></div>
           <a class="dropdown-item" href="#">Mi perfil</a>
           <a class="dropdown-item" href="#">Historial</a>
@@ -105,8 +105,8 @@
     endif;
     ?>
     <div class="header__icono__carrito d-flex">
-      <i class="fas fa-shopping-cart"></i>
-      <span class="badge badge-pill badge-success">3</span>
+      <i class="fas fa-shopping-cart" id="iconoCarrito"></i>
+      <span class="badge badge-pill badge-success">8</span>
     </div>
   </div>
 </header>
@@ -134,7 +134,138 @@
   </nav>
 </div>
 
+<section class="header__carrito" id="carritoCompra">
+  <div class="carrito__informacion">
+    <i class="fas fa-times text-muted carrito__cerrar" id="cerrarCarrito"></i>
+    <h3>Carrito de compra</h3>
+    <hr>
+    <div id="listaCarrito" class="carrito__lista mt-3">
+      <article class="d-flex carrito__articulo my-1">
+        <div class="informacion__imagen">
+          <img src="<?php echo SERVER_URL;?>assets/img/smartphones/4.jpg" alt="imagen">
+        </div>
+        <div class="informacion__informacion">
+          <h5 class="m-0">Iphone 11 Pro Max (256 GB)</h5>
+          <p class="text-success font-weight-bold m-0">$ 924.000</p>
+          <div class="d-flex align-items-center">
+            <label for="" class="m-0 text-muted">Cantidad: </label>
+            <input class="informacion__cantidad" type="number" value="1" min="1" max="20">
+          </div>
+        </div>
+        <i class="fas fa-times text-danger informacion__eliminar"></i>
+      </article>
+      <article class="d-flex carrito__articulo my-1">
+        <div class="informacion__imagen">
+          <img src="<?php echo SERVER_URL;?>assets/img/smartphones/4.jpg" alt="imagen">
+        </div>
+        <div class="informacion__informacion">
+          <h5 class="m-0">Iphone 11 Pro Max (256 GB)</h5>
+          <p class="text-success font-weight-bold m-0">$ 924.000</p>
+          <div class="d-flex align-items-center">
+            <label for="" class="m-0 text-muted">Cantidad: </label>
+            <input class="informacion__cantidad" type="number" value="1" min="1" max="20">
+          </div>
+        </div>
+        <i class="fas fa-times text-danger informacion__eliminar"></i>
+      </article>
+      <article class="d-flex carrito__articulo my-1">
+        <div class="informacion__imagen">
+          <img src="<?php echo SERVER_URL;?>assets/img/smartphones/4.jpg" alt="imagen">
+        </div>
+        <div class="informacion__informacion">
+          <h5 class="m-0">Iphone 11 Pro Max (256 GB)</h5>
+          <p class="text-success font-weight-bold m-0">$ 924.000</p>
+          <div class="d-flex align-items-center">
+            <label for="" class="m-0 text-muted">Cantidad: </label>
+            <input class="informacion__cantidad" type="number" value="1" min="1" max="20">
+          </div>
+        </div>
+        <i class="fas fa-times text-danger informacion__eliminar"></i>
+      </article>
+      <article class="d-flex carrito__articulo my-1">
+        <div class="informacion__imagen">
+          <img src="<?php echo SERVER_URL;?>assets/img/smartphones/4.jpg" alt="imagen">
+        </div>
+        <div class="informacion__informacion">
+          <h5 class="m-0">Iphone 11 Pro Max (256 GB)</h5>
+          <p class="text-success font-weight-bold m-0">$ 924.000</p>
+          <div class="d-flex align-items-center">
+            <label for="" class="m-0 text-muted">Cantidad: </label>
+            <input class="informacion__cantidad" type="number" value="1" min="1" max="20">
+          </div>
+        </div>
+        <i class="fas fa-times text-danger informacion__eliminar"></i>
+      </article>
+      <article class="d-flex carrito__articulo my-1">
+        <div class="informacion__imagen">
+          <img src="<?php echo SERVER_URL;?>assets/img/smartphones/4.jpg" alt="imagen">
+        </div>
+        <div class="informacion__informacion">
+          <h5 class="m-0">Iphone 11 Pro Max (256 GB)</h5>
+          <p class="text-success font-weight-bold m-0">$ 924.000</p>
+          <div class="d-flex align-items-center">
+            <label for="" class="m-0 text-muted">Cantidad: </label>
+            <input class="informacion__cantidad" type="number" value="1" min="1" max="20">
+          </div>
+        </div>
+        <i class="fas fa-times text-danger informacion__eliminar"></i>
+      </article>
+      <article class="d-flex carrito__articulo my-1">
+        <div class="informacion__imagen">
+          <img src="<?php echo SERVER_URL;?>assets/img/smartphones/4.jpg" alt="imagen">
+        </div>
+        <div class="informacion__informacion">
+          <h5 class="m-0">Iphone 11 Pro Max (256 GB)</h5>
+          <p class="text-success font-weight-bold m-0">$ 924.000</p>
+          <div class="d-flex align-items-center">
+            <label for="" class="m-0 text-muted">Cantidad: </label>
+            <input class="informacion__cantidad" type="number" value="1" min="1" max="20">
+          </div>
+        </div>
+        <i class="fas fa-times text-danger informacion__eliminar"></i>
+      </article>
+      <article class="d-flex carrito__articulo my-1">
+        <div class="informacion__imagen">
+          <img src="<?php echo SERVER_URL;?>assets/img/smartphones/4.jpg" alt="imagen">
+        </div>
+        <div class="informacion__informacion">
+          <h5 class="m-0">Iphone 11 Pro Max (256 GB)</h5>
+          <p class="text-success font-weight-bold m-0">$ 924.000</p>
+          <div class="d-flex align-items-center">
+            <label for="" class="m-0 text-muted">Cantidad: </label>
+            <input class="informacion__cantidad" type="number" value="1" min="1" max="20">
+          </div>
+        </div>
+        <i class="fas fa-times text-danger informacion__eliminar"></i>
+      </article>
+      <article class="d-flex carrito__articulo my-1">
+        <div class="informacion__imagen">
+          <img src="<?php echo SERVER_URL;?>assets/img/smartphones/4.jpg" alt="imagen">
+        </div>
+        <div class="informacion__informacion">
+          <h5 class="m-0">Iphone 11 Pro Max (256 GB)</h5>
+          <p class="text-success font-weight-bold m-0">$ 924.000</p>
+          <div class="d-flex align-items-center">
+            <label for="" class="m-0 text-muted">Cantidad: </label>
+            <input class="informacion__cantidad" type="number" value="1" min="1" max="20">
+          </div>
+        </div>
+        <i class="fas fa-times text-danger informacion__eliminar"></i>
+      </article>
+      <div class="carrito__resumen my-4">
+        <p class="m-0">Cantidad total: <span class="font-weight-bold ml-2">8</span></p>
+        <p class="m-0">TOTAL A PAGAR: <span class="font-weight-bold text-success ml-2">$ 7.392.000</span></p>
+      </div>
+      <button class="btn btn-success btn-block mt-3 my-4 w-75 mx-auto">COMPRAR</button>
+    </div>
+  </div>
+</section>
+
 <div id="ocultarFondo" class="ocultar-fondo d-md-none">
+  <div class="ocultar-fondo__capa"></div>
+  <div class="ocultar-fondo__header"></div>
+</div>
+<div id="ocultarFondoCarrito" class="ocultar-fondo">
   <div class="ocultar-fondo__capa"></div>
   <div class="ocultar-fondo__header"></div>
 </div>

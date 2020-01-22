@@ -77,7 +77,6 @@ if (directorioPadre == "buscar") {
   parametro = parametro = parametro.split(' ');
   parametro = parametro.join('-');
   parametro = parametro.toLowerCase();
-  console.log(parametro);
   obtenerSmartphones('buscar', 'listaSmartphones', 0, parametro);
 }
 
@@ -90,7 +89,6 @@ function obtenerSmartphone(codigo, padre) {
     data: {codigo},
     dataType: "json",
     success: function (res) {
-      console.log(res);
       let mensaje = llenarSmartphone(res);
       $(`#${padre}`).html(mensaje);
     },
@@ -106,7 +104,6 @@ function obtenerSmartphone(codigo, padre) {
 }
 
 function llenarSmartphone(smartphone) {
-  console.log(smartphone);
   let imagen = "null";
   if (smartphone.imagen) {
     imagen = `${raiz}assets/img/smartphones/${smartphone.imagen}`;
@@ -305,7 +302,6 @@ function obtenerSmartphones(tipo, padre, orden = 0, buscar = "") {
       }
     },
     error: function (e) {
-      console.log(e);
       $(`#${padre}`).html(`
         <div class="text-center mt-5">
           <p class="lead text-uppercase">${text}</p>
@@ -326,7 +322,6 @@ function llenarSmartphones(smartphones, tipo, orden) {
     });
   }
   if (orden == 1) {
-    console.log('entando');
     smartphones = smartphones.data.sort((a,b) => {
       if (a.popularidad < b.popularidad)
         return -1;
@@ -353,9 +348,8 @@ function llenarSmartphones(smartphones, tipo, orden) {
       return 0;
     });
   }
-  console.log(smartphones);
   let mensaje = "";
-  if (tipo !== "populares") {
+  if (tipo !== "populares" && tipo !== "buscar") {
     mensaje += `
       <label class="mr-2" for="cmbOrden">Ordenar por: </label>
       <select class="mb-4" id="cmbOrden">

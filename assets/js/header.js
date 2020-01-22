@@ -1,9 +1,10 @@
 var serverUrl = "http://localhost/chaimastore/";
 var seMuestra = false;
 var seBusca = false;
+var muestraCarrito = false;
 
 $(window).resize(function () {
-  if ($(window).width() > 768 && $('body').css('overflow') === 'hidden') {
+  if ($(window).width() > 768 && $('body').css('overflow') === 'hidden' && muestraCarrito === false) {
     $('body').css('overflow', 'auto');
   }
   if ($(window).width() <= 768 && seMuestra || $(window).width() <= 768 && seBusca) {
@@ -38,6 +39,15 @@ $(document).click(function (e) {
       seBusca = false;
     }
   }
+  if (muestraCarrito) {
+    let carrito = $('#carritoCompra');
+    if (!carrito.is(e.target) && carrito.has(e.target).length === 0) {
+      $('#ocultarFondoCarrito').fadeOut(300);
+      $('#carritoCompra').fadeOut(300);
+      $('body').css('overflow', 'auto');
+      muestraCarrito = false;
+    }
+  }
 });
 
 $('#menuHamburguesa').click(function (e) { 
@@ -61,6 +71,48 @@ $('#iconoBuscar').click(function (e) {
     seBusca = true;
   }, 200);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+$('#iconoCarrito').click(function (e) { 
+  e.preventDefault();
+  $('#ocultarFondoCarrito').css("display", "block");
+  $('#ocultarFondoCarrito').fadeIn(400);
+  $('#carritoCompra').fadeIn(400);
+  $('body').css('overflow', 'hidden');
+  setTimeout(() => {
+    muestraCarrito = true;
+  }, 200);
+});
+$('#cerrarCarrito').click(function (e) { 
+  e.preventDefault();
+  $('#ocultarFondoCarrito').fadeOut(300);
+  $('#carritoCompra').fadeOut(300);
+  $('body').css('overflow', 'auto');
+  muestraCarrito = false;
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 $('#txtBuscar, #txtBuscar1').keyup(function (e) { 
   input = $(this);
